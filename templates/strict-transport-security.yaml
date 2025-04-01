@@ -1,5 +1,4 @@
 id: strict-transport-security-checks
-
 info: 
   name: Strict-Transport-Security Header Check
   author: Hamed Salimian, Arthur Bayart
