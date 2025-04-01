@@ -14,14 +14,14 @@ info:
     The only correct value for this header is "nosniff".
 
 http:
-  - method: GET
+  - global-matchers: true
+    method: GET
     path: {{BaseURL}}
     headers:
       User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
       Accept: "*/*"
       Connection: close
       Host: {{Hostname}}
-    
     extractors:
       - type: kval
         name: "X-Content-Type-Options"
