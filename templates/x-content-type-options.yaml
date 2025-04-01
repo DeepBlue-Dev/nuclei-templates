@@ -33,10 +33,10 @@ http:
     matchers:
       
       - type: dsl
-        name: '"X-Content-Type-Options: nosniff" header does not exist.'
+        name: 'X-Content-Type-Options: nosniff header does not exist.'
         dsl:
           - '!contains(header, "X-Content-Type-Options: nosniff")'
       - type: dsl
-        name: '"X-Content-Type-Options" is not set to nosniff'
+        name: 'X-Content-Type-Options is not set to nosniff'
         dsl:
           - 'contains(header, "X-Content-Type-Options")'
