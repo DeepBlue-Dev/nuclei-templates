@@ -49,6 +49,6 @@ http:
           - (?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b
 
       - type: dsl
-        name: "'Strict-Transport-Security' (HSTS) header max-age is less than 2 years."
+        name: "'Strict-Transport-Security' (HSTS) header max-age is less than 1 years."
         dsl:
           - 'max_age < 31536000'
