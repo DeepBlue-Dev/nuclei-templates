@@ -35,20 +35,20 @@ http:
     stop-at-first-match: true
     matchers:
       - type: word
-        name: "Strict-Transport-Security header does not exist"
+        name: "strict_transport_security_header_is_not_set"
         part: header
         negative: true
         words:
           - 'Strict-Transport-Security:'
 
       - type: regex
-        name: "Strict-Transport-Security header does not include subdomains"
+        name: "strict_transport_security_includesubdomains_directive_not_set"
         part: header
         negative: true
         regex:
           - (?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b
 
       - type: dsl
-        name: "Strict-Transport-Security header max-age is less than 1 years"
+        name: "strict_transport_security_max_age_less_than_1_year"
         dsl:
           - 'max_age < 31536000'
