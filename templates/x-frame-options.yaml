@@ -35,13 +35,12 @@ http:
     matchers-condition: or
     matchers:
       - type: word
-        name: 'X-Frame-Options header does not exist.'
+        name: 'X-Frame-Options header does not exist.' # x_frame_options_is_not_set
         part: header
         negative: true
         words:
           - "X-Frame-Options"
       - type: word
-        name: "X-Frame-Options is set to SAMEORIGIN"
+        name: "X-Frame-Options is set to SAMEORIGIN" # x_frame_options_is_set_to_sameorigin
         words:
           - "X-Frame-Options: SAMEORIGIN"
-          
