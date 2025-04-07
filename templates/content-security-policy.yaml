@@ -30,14 +30,24 @@ http:
         - Content_Security_Policy
     matchers:
       - type: word
-        name: "Content-Security-Policy header is not set"
+        name: "csp_header_is_not_set"
         part: header
         negative: true
         words:
           - "Content-Security-Policy"
-      - type: word
-        name: "unsafe script-src"
-        part: header
-        words:
-          - "object-src"
+      - type: regex
+        name: "csp_header_script_src_unsafe_inline"
+        part: Content_Security_Policy
+        regex:
+          - "script-src 'unsafe-inline'"
+      - type: regex
+        name: "csp_header_script_src_unsafe_eval"
+        part: Content_Security_Policy
+        regex:
+          - "script-src 'unsafe-eval'"
+      - type: regex
+        name: "csp_header_object_source_not_none"
+        part: Content_Security_Policy
+        regex:
+          - "object-src 'none'"
       
