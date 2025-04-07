@@ -39,16 +39,22 @@ http:
 
       - type: dsl
         name: "csp_header_script_src_unsafe_inline"
+        condition: and
         dsl:
+          - len(Content_Security_Policy) > 0 # Check if the header is set
           - regex("(script-src|default-src)[^;]*?(\'unsafe-inline\')", Content_Security_Policy) # Also matches default-src 'unsafe-inline'
 
       - type: dsl 
         name: "csp_header_script_src_unsafe_eval"
+        condition: and
         dsl:
+          - len(Content_Security_Policy) > 0 # Check if the header is set
           - regex("(script-src|default-src)[^;]*?(\'unsafe-eval\')", Content_Security_Policy) # Also matches default-src 'unsafe-eval'
 
       - type: dsl
         name: "csp_header_object_source_not_none"
+        condition: and
         negative: true
         dsl:
+          - len(Content_Security_Policy) > 0 # Check if the header is set
           - contains(Content_Security_Policy, "object-src \'none\'")
