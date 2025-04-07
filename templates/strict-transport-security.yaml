@@ -39,7 +39,7 @@ http:
         part: header
         negative: true
         words:
-          - 'Strict-Transport-Security:'
+          - "Strict-Transport-Security"
 
       - type: regex
         name: "strict_transport_security_includesubdomains_directive_not_set"
