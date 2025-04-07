@@ -34,9 +34,11 @@ http:
     matchers:
       - type: dsl
         name: 'x_content_type_options_header_is_missing'
-        dsl:
-          - '!contains(header, "X-Content-Type-Options: nosniff")'
-      - type: dsl
-        name: 'x_content_type_options_header_value_is_not_nosniff'
+        negative: true
         dsl:
           - 'contains(header, "X-Content-Type-Options")'
+      - type: dsl
+        name: 'x_content_type_options_header_value_is_not_nosniff'
+        negative: true
+        dsl:
+          - 'contains(header, "X-Content-Type-Options: nosniff")'
