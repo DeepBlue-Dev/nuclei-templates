@@ -40,14 +40,14 @@ http:
         part: Content_Security_Policy
         regex:
           - "script-src 'unsafe-inline'"
-      - type: regex
+      - type: dsl
         name: "csp_header_script_src_unsafe_eval"
-        part: Content_Security_Policy
-        regex:
-          - "script-src 'unsafe-eval'"
-      - type: regex
+        condition: or
+        dsl:
+          - contains(Content_Security_Policy, 'unsafe-eval'") # Also matches default-src 'unsafe-eval'
+      - type: dsl
         name: "csp_header_object_source_not_none"
-        part: Content_Security_Policy
-        regex:
-          - "object-src 'none'"
+        negative: true
+        dsl:
+          - contains(Content_Security_Policy, "object-src 'none'")
       
