@@ -24,10 +24,11 @@ http:
       Host: "{{Hostname}}"
     extractors:
     - type: kval
-      name: "Content-Security-Policy"
+      name: Content_Security_Policy
       part: header
       kval:
         - Content_Security_Policy
+    stop-at-first-match: false
     matchers:
       - type: word
         name: "csp_header_is_not_set"
@@ -35,19 +36,19 @@ http:
         negative: true
         words:
           - "Content-Security-Policy"
-      - type: regex
-        name: "csp_header_script_src_unsafe_inline"
-        part: Content_Security_Policy
-        regex:
-          - "script-src 'unsafe-inline'"
+
       - type: dsl
-        name: "csp_header_script_src_unsafe_eval"
-        condition: or
+        name: "csp_header_script_src_unsafe_inline"
         dsl:
-          - contains(Content_Security_Policy, 'unsafe-eval'") # Also matches default-src 'unsafe-eval'
+          - regex("(script-src|default-src)[^;]*?(\'unsafe-inline\')", Content_Security_Policy) # Also matches default-src 'unsafe-inline'
+
+      - type: dsl 
+        name: "csp_header_script_src_unsafe_eval"
+        dsl:
+          - regex("(script-src|default-src)[^;]*?(\'unsafe-eval\')", Content_Security_Policy) # Also matches default-src 'unsafe-eval'
+
       - type: dsl
         name: "csp_header_object_source_not_none"
         negative: true
         dsl:
-          - contains(Content_Security_Policy, "object-src 'none'")
-      
+          - contains(Content_Security_Policy, "object-src \'none\'")
