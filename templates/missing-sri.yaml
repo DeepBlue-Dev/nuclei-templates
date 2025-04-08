@@ -40,7 +40,7 @@ http:
     matchers:
       - type: xpath
         part: body
-        name: missing_sri
+        name: sri_missing
         xpath:
           - "//script[contains(@src,'//') and not(matches(translate(@integrity,'ABCDEFGHIJKLMNOPQRSTUVWXYZ+/-=','abcdefghijklmnopqrstuvwxyz+/-='), '^sha(256|384|512)-'))]"
           - "//script[contains(@src, '//') and (not(@integrity) or not(matches(translate(@integrity, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ+/-=', 'abcdefghijklmnopqrstuvwxyz+/-='), '^sha(256|384|512)-')))]"
