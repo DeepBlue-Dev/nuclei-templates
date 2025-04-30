@@ -1,0 +1,12 @@
+id: error-pages-check
+
+info:
+  name: Error Pages Check
+  author: Arthur Bayart
+  severity: low
+  reference:
+    - https://github.com/danielmiessler/SecLists/blob/master/Pattern-Matching/errors.txt
+  tags: asvs,14.4.3
+  description: |
+    Check if the application returns error pages that could be interesting. Used the regexes provided from seclists.
+http:
