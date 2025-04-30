@@ -30,6 +30,7 @@ http:
       - type: regex
         name: "max-age"
         part: header
+        internal: true
         regex:
           - (?i)max-age=(\d+)
     stop-at-first-match: true
