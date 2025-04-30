@@ -33,6 +33,7 @@ http:
         regex:
           - (?i)max-age=(\d+)
     stop-at-first-match: true
+    matchers-condition: or
     matchers:
       - type: word
         name: "strict_transport_security_header_is_not_set"
