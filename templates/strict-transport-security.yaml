@@ -42,12 +42,12 @@ http:
         words:
           - Strict-Transport-Security
 
-      - type: regex
+      - type: dsl
         name: "strict_transport_security_includesubdomains_directive_not_set"
-        part: header
-        negative: true
-        regex:
-          - (?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b
+        condition: and
+        dsl:
+          - 'contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
+          - '!regex("(?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b", Strict_Transport_Security)'
 
       - type: dsl
         name: "strict_transport_security_max_age_less_than_1_year"
