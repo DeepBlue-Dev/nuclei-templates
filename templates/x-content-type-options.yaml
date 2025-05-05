@@ -29,7 +29,6 @@ http:
         part: header
         kval:
           - X_Content_Type_Options
-    stop-at-first-match: true
     matchers-condition: or
     matchers:
       - type: dsl

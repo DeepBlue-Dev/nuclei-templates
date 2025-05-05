@@ -33,7 +33,6 @@ http:
         internal: true
         regex:
           - (?i)max-age=(\d+)
-    stop-at-first-match: true
     matchers-condition: or
     matchers:
       - type: word
