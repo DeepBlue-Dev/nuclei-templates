@@ -35,19 +35,16 @@ http:
           - (?i)max-age=(\d+)
     matchers-condition: or
     matchers:
-      - type: word
-        name: "strict_transport_security_header_is_not_set"
-        part: header
-        negative: true
-        words:
-          - Strict-Transport-Security
-
+      - type: dsl
+        name: 'strict_transport_security_header_is_not_set'
+        dsl:
+          - '!contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
       - type: dsl
         name: "strict_transport_security_includesubdomains_directive_not_set"
         condition: and
         dsl:
           - 'contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
-          - '!contains(strict_transport_security, "includeSubDomains")' # Check if the header includes the includeSubDomains directive
+          - '!regex("(?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b", Strict_Transport_Security)'
 
       - type: dsl
         name: "strict_transport_security_max_age_less_than_1_year"
