@@ -44,7 +44,7 @@ http:
         condition: and
         dsl:
           - 'contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
-          - '!regex("(?i)Strict-Transport-Security:\s*.*\bincludeSubdomains\b", Strict_Transport_Security)'
+          - '!contains(strict_transport_security, "includeSubDomains")' # Check if the header includes the includeSubDomains directive
 
       - type: dsl
         name: "strict_transport_security_max_age_less_than_1_year"
