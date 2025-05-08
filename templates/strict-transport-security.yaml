@@ -48,6 +48,7 @@ http:
 
       - type: dsl
         name: "strict_transport_security_max_age_less_than_1_year"
+        condition: and
         dsl:
           - 'contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
           - max_age < 31536000
