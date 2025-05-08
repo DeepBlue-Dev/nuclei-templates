@@ -28,9 +28,9 @@ http:
         kval:
           - Strict_Transport_Security
       - type: regex
-        name: "max-age"
+        name: max_age
         part: header
-        internal: true
+        group: 1
         regex:
           - (?i)max-age=(\d+)
     matchers-condition: or
@@ -51,4 +51,4 @@ http:
         condition: and
         dsl:
           - 'contains(all_headers, "Strict-Transport-Security")' # Check if the header is set
-          - max_age < 31536000
+          - 'max_age < "31536000"'
