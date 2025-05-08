@@ -28,7 +28,7 @@ http:
         part: header
         kval:
           - Content_Security_Policy
-          
+
     matchers:
       - type: dsl
         name: csp_header_is_not_set
